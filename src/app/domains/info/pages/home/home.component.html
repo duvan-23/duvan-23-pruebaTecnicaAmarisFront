@@ -1,0 +1,27 @@
+
+<div class="padre">
+	<div class="container ">
+		<app-header/>
+		<div class="row mt-5 justify-content-md-center">
+			<h1 class="text-center text-white">Busqueda de Empleados</h1>
+			<div class="col-md-3 mt-5">
+				<input type="text" class="form-control" placeholder="Id empleado" [formControl]="inputBuscar">
+			</div>
+		</div>
+		<div class="row mt-2 justify-content-md-center">		
+			@if(!isValid()){
+				<div class="col-md-3 alert alert-danger text-center" role="alert">
+					Ingrese un valor númerico
+				</div>
+			}
+		</div>
+		<div class="row mt-5 justify-content-md-center">
+			<div class="col-md-5  text-center">
+				<button class=" btn btn-info text-white btn-lg " (click)="buscar()"><i class="bi bi-search"></i>Buscar</button>
+			</div>
+		</div>
+		<div class="row mt-5">
+			<app-tabla [id]="id()"/>
+		</div>
+	</div>
+</div>
