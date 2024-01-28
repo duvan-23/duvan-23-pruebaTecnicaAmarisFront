@@ -4,3 +4,9 @@ img{
 .menu:hover{
     text-decoration: underline;
 }
+.linea{
+    border-bottom: 3px solid rgb(148 230 239 / 51%);
+}
+.menu{
+    font-family: emoji;
+}
