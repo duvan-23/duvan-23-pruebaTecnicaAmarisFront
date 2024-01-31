@@ -1,3 +1,14 @@
-tbody>tr>th{
-    font-weight: 200;
+table{
+    background-color: white;
+}
+table th{
+    background-color: #2196F3;
+    font-weight: 450;
+}
+table td{
+    color: black;
+    border-bottom: 1px solid #2196F3;
+}
+.mat-mdc-paginator{
+    background-color: #2196F3!important;
 }

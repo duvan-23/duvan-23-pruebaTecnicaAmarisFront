@@ -1,12 +1,37 @@
-img{
-    border-radius: 15%;
+.toolbar-image {
+    height: 70px;
+    width: auto;
+    margin-right: 16px;
+    border-radius: 10%;
+  }
+  
+.example-spacer {
+    flex: 1;
 }
-.menu:hover{
-    text-decoration: underline;
+
+.mat-toolbar {
+    height: 80px;
+    background-color: #2196F3;
 }
-.linea{
-    border-bottom: 3px solid rgb(148 230 239 / 51%);
+.mat-toolbar-row {
+    justify-content: space-between; 
+    background-color: #2196F3;
+    color: white; 
+    padding: 50px 150px; 
 }
-.menu{
+.active-button {
+    background-color: #00adff;
+}
+.boton{
+    margin: 0px 5px;
+    font-size: large;
     font-family: emoji;
+}
+.contenedor{
+    background-color: #2196F3;
+    text-align: center;
+}
+.titulo{
+    font-family: cursive!important;
+    font-size: 35px;
 }

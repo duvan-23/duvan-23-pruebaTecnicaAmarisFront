@@ -1,36 +1,44 @@
-<table class="table table-striped table-light ">
-	<thead >
-		<tr>
-			<th scope="col">#</th>
-			<th scope="col">ID</th>
-			<th scope="col">Nombre</th>
-			<th scope="col">Salario</th>
-			<th scope="col">Edad</th>
-			<th scope="col">Imagen</th>
-			<th scope="col">Salario Anual</th>
-		</tr>
-	</thead>
-	<tbody>
-		@for (empleado of empleados() ; track empleado.id; let i = $index) {
-			<tr>
-				<th scope="row">{{ i + 1 }}</th>
-				<th scope="row">{{ empleado.id }}</th>
-				<th scope="row">{{ empleado.employee_name }}</th>
-				<th scope="row">{{ empleado.employee_salary | currency:'$'}}</th>
-				<th scope="row">{{ empleado.employee_age }}</th>
-				<th>
-					<img
-						[src]="empleado.profile_image"
-						class="me-2"
-						style="width: 20px"
-					/>
-				</th>
-                <th scope="row">{{ empleado.employee_anual_salary | currency:'$'}}</th>
-			</tr>
-		} @empty {
-			<tr>
-				<td colspan="7" style="text-align: center">No Empleados encontrados</td>
-			</tr>
-		}
-	</tbody>
-</table>
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)" >
+
+	  <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by id"> Id </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by name"> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_name}} </td>
+      </ng-container>
+  
+      <ng-container matColumnDef="salario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by salario"> Salario </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_salary| currency:'$'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="edad">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Edad </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_age}} </td>
+      </ng-container>
+      <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Imagen </th>
+        <td mat-cell *matCellDef="let element"> <img [src]="element.profile_image"class="me-2"style="width: 20px"/> </td>
+      </ng-container>
+      <ng-container matColumnDef="salarioAnual">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by symbol"> Salario Anual </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee_anual_salary| currency:'$'}} </td>
+      </ng-container>
+  
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+	  <tr class="mat-row" *matNoDataRow>
+		<td class="mat-cell"style="text-align: center" [attr.colspan]="displayedColumns.length">
+			No Empleados encontrados
+		</td>
+	  </tr>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5]"
+                   showFirstLastButtons
+                   aria-label="Select page of periodic elements">
+    </mat-paginator>
+</div>
