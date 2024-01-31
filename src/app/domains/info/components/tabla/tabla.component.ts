@@ -25,7 +25,7 @@ export class TablaComponent {
   private empleadoService = inject(EmpleadosService);
 	filter = new FormControl('', { nonNullable: true });
  
-  displayedColumns: string[] = ['id', 'nombre', 'salario', 'edad', 'imagen', 'salarioAnual'];
+  displayedColumns: string[] = ['id', 'nombre','salario', 'edad', 'imagen', 'salarioAnual'];
   dataSource:MatTableDataSource<Empleado>;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
@@ -48,9 +48,7 @@ export class TablaComponent {
   
   ngOnChanges(changes: SimpleChanges) {
     const id = changes['id'];
-    if (id && id.currentValue !== id.previousValue) {
-      console.log("entro change");
-      
+    if (id || this.id==0) {
       if (this.id && this.id >0) {
         this.getEmpleado();
       }else{
@@ -64,6 +62,7 @@ export class TablaComponent {
     .subscribe({
       next: (empleados) =>{
         this.empleados.set(empleados);
+        this.dataSource.data = this.empleados();
       },
       error: (e)=>{
         console.log(e);
@@ -77,6 +76,7 @@ export class TablaComponent {
       .subscribe({
         next: (empleados) =>{
           this.empleados.set(empleados) ;
+          this.dataSource.data = this.empleados();
         },
         error: (e)=>{
           console.log(e);
