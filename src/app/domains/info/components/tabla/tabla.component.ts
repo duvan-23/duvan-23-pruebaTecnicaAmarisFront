@@ -48,7 +48,7 @@ export class TablaComponent {
   
   ngOnChanges(changes: SimpleChanges) {
     const id = changes['id'];
-    if (id || this.id==0) {
+    if (id) {
       if (this.id && this.id >0) {
         this.getEmpleado();
       }else{
