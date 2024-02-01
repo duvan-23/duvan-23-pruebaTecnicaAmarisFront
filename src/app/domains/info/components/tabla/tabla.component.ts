@@ -30,7 +30,6 @@ export class TablaComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
   constructor(private _liveAnnouncer: LiveAnnouncer) {
-    this.getEmpleados(); 
     this.dataSource = new MatTableDataSource<Empleado>( this.empleados());
   }
   ngAfterViewInit() {
